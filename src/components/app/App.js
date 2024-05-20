@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import AppHeader from "../appHeader/AppHeader";
-import AppList from "../appList/AppList";
+import AppList from '../AppList/AppList';
 import Categories from '../appList/Categories';
 import ShowFullItem from '../showFullItem/showFullItem';
 
