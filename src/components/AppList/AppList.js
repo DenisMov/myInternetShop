@@ -3,7 +3,7 @@ import React from "react";
 import './appList.scss';
 import buttonImg from '../../resources/img/Button.png'
 
-const AppList = ({item, items, onAdd, onShowItem}) => {
+const AppList = ({items, onAdd, onShowItem}) => {
     return (
         <div className="appMenu__list">
             <ul className="appMenu__grid">
