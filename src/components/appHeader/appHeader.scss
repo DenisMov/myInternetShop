@@ -1,0 +1,95 @@
+@import '../../style/variables.scss';
+
+.app {
+    position: relative;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__title {
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 37px;
+        span {
+            color: $main-color;
+        }
+    }
+    &__menu {
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        li {
+            text-align: center;
+            margin: 0 8px;
+            a:hover {
+                color: $main-color;
+            }
+        }
+    }
+    .shop-cart-button {
+        float: right;
+        cursor:pointer;
+        transition: color, transform 500ms ease;
+    }
+    .shop-cart-button:hover,
+    .shop-cart-button.active {
+        color: red;
+        transform: scale(1.5);
+    }
+    .shop-cart {
+        position: absolute;
+        top: 150px;
+        right: 0;
+        width: 450px;
+        background-color: rgb(205, 204, 204);
+        -webkit-box-shadow: 3px 2px 5px 0px #606060; 
+        box-shadow: 3px 2px 5px 0px #606060;
+        z-index: 1000;
+
+        padding: 20px;
+        padding-bottom: 0;
+    }
+    .shop-cart .item{
+        width: 100%;
+        float: left;
+        margin-bottom: 20px;
+    }
+
+    .shop-cart .item .delete-icon{
+        color: #ca5252;
+        float: right;
+        position: relative;
+        top: -50px;
+        cursor: pointer;
+        transition: color, transform 500ms ease;
+    }
+    .shop-cart .summa {
+        float: left;
+        width: 100%;
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: black;
+    }
+    .shop-cart .item .delete-icon:hover {
+        color:#853535;
+        transform: scale(1.5);
+    }
+    
+    .shop-cart .item img{
+        width: 70px;
+        float: left;
+        margin: 0 10px;
+    }
+    .shop-cart h2{
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .shop-cart p {
+        color: #797979;
+        font-weight: 600;
+    }
+}
