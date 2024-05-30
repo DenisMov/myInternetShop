@@ -1,9 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { chooseCategory } from '../../actions/actions';
+
+
+const mapDispatchToProps = {
+    chooseCategory
+};
 
 const Categories = ({chooseCategory}) => {
     const categories = [
         {
-            key:'all',
+            key:'All',
             name:'Все',
         },
         {
@@ -24,13 +31,13 @@ const Categories = ({chooseCategory}) => {
         }
     ]
 
-  return (
-    <div className='categories'>
-        {categories.map(el => (
-            <div key={el.key} onClick={() => chooseCategory(el.key)}>{el.name}</div>
-        ))}
-    </div>
-  )
+    return (
+        <div className='categories'>
+            {categories.map(el => (
+                <div key={el.key} onClick={() => chooseCategory(el.key)}>{el.name}</div>
+            ))}
+        </div>
+    )
 }
 
-export default Categories
+export default connect(null, mapDispatchToProps)(Categories);

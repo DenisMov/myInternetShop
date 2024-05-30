@@ -1,20 +1,29 @@
+import React, {useState} from "react";
 import { FaBasketShopping } from "react-icons/fa6";
-import './appHeader.scss';
-import React,{ useState } from "react";
+import {connect} from 'react-redux';
 import Order from "./Order";
+import {toggleCart } from "../../actions/actions";
+import './appHeader.scss';
 
+const mapStateToProps = (state) => ({
+    orders: state.orders,
+    isCartOpen: state.isCartOpen,
+    deleteOrder: state.deleteOrder
+});
 
+const mapDispatchToProps = {
+    toggleCart: toggleCart
+};
 
-const AppHeader = ({orders, onDelete}) => {
-    let [cartOpen,setCartOpen] = useState(false)
-    
+const AppHeader = ({orders, deleteOrder, isCartOpen, toggleCart}) => {   
+
     const showOrders = () => {
         let summa = 0
         orders.forEach(el => summa += Number.parseFloat(el.price))
 
         return (<div>
             {orders.map(el => (
-                <Order onDelete={onDelete} key={el.id} item={el}/>
+                <Order onDelete={deleteOrder} key={el.id} item={el}/>
             ))}
 
             <p className="summa">Сума: {new Intl.NumberFormat().format(summa)} $</p>
@@ -39,12 +48,12 @@ const AppHeader = ({orders, onDelete}) => {
                 <li><a href="#">Гарантія</a></li>
                 <li><a href="#">Відгуки</a></li>
                 <li><a href="#">Контаки</a></li>
-                <FaBasketShopping onClick={()=> setCartOpen(cartOpen => !cartOpen) } className={`shop-cart-button ${cartOpen && 'active'}`} />
+                <FaBasketShopping onClick={toggleCart} className={`shop-cart-button ${isCartOpen && 'active'}`} />
 
-                {cartOpen && (
+                {isCartOpen && (
                     <div className="shop-cart">
                         {orders.length > 0 ? 
-                        showOrders(orders) : showNothing()}
+                        showOrders() : showNothing()}
                     </div>
                 )}
             </nav>
@@ -52,4 +61,4 @@ const AppHeader = ({orders, onDelete}) => {
     )
 }
 
-export default AppHeader;
+export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
