@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from '../../store/store';
+import index from '../../store';
 import AppList from '../appList/AppList';
 import AppHeader from "../appHeader/AppHeader";
 import Categories from '../appList/Categories';
@@ -9,7 +9,7 @@ import ShowFullItem from '../showFullItem/showFullItem';
 
 const App = () => {
     return (
-        <Provider store={store}>
+        <Provider store={index}>
             <div className="app">
                 <AppHeader/>
                 
